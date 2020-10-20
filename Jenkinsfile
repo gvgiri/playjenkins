@@ -1,9 +1,9 @@
 pipeline {
 
-  environment {
-    registry = "192.168.1.81:5000/justme/myweb"
-    dockerImage = ""
-  }
+#  environment {
+#    registry = "192.168.1.81:5000/justme/myweb"
+#    dockerImage = ""
+#  }
 
   agent any
 
@@ -11,14 +11,14 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/justmeandopensource/playjenkins.git'
+        git 'https://github.com/gvgiri/WebApp-NJS.git'
       }
     }
 
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build gvgiri/example-repo:3.0"
         }
       }
     }
@@ -33,13 +33,13 @@ pipeline {
       }
     }
 
-    stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
-        }
-      }
-    }
+   # stage('Deploy App') {
+   #   steps {
+   #     script {
+   #       kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
+   #     }
+   #   }
+   # }
 
   }
 

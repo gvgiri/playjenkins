@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/gvgiri/WebApp-NJS.git'
+        git 'https://github.com/gvgiri/playjenkins.git'
       }
     }
 

@@ -33,13 +33,13 @@ pipeline {
       }
     }
 
-   # stage('Deploy App') {
-   #   steps {
-   #     script {
-   #       kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
-   #     }
-   #   }
-   # }
+   stage('Deploy App') {
+     steps {
+        script {
+          kubernetesDeploy(configs: "myweb2.yaml", kubeconfigId: "mykubeconfig2")
+        }
+      }
+    }
 
   }
 

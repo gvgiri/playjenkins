@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build gvgiri/example-repo:3.0"
+          dockerImage = docker.build gvgiri/example-repo"
         }
       }
     }

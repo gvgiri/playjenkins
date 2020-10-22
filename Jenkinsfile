@@ -1,8 +1,8 @@
 pipeline {
 
   environment {
-   registry = "192.168.1.81:5000/justme/myweb"
-   dockerImage = ""
+    registry = "192.168.1.81:5000/justme/myweb"
+    dockerImage = ""
   }
 
   agent any
@@ -18,7 +18,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build gvgiri/example-repo"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
@@ -33,10 +33,10 @@ pipeline {
       }
     }
 
-   stage('Deploy App') {
-     steps {
+    stage('Deploy App') {
+      steps {
         script {
-          kubernetesDeploy(configs: "myweb2.yaml", kubeconfigId: "mykubeconfig2")
+          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
         }
       }
     }

@@ -16,7 +16,7 @@ spec:
         app: myweb
     spec:
       containers:
-      - image: docker-registry.sol-it.com:5000/myweb:1
+      - image: docker-registry.sol-it.com:5000/myweb:4
         imagePullPolicy: Always
         name: myweb
 
